@@ -1,21 +1,6 @@
-install.packages("finch", type = "source")
-
-#library
-library(finch)
-
-#Load data
-
-df <- simple_read("/Users/elizabethlombardi/Desktop/Research/ESIIL biotic interactions group/GBIF viruses/0072899-240626123714530.zip")
 
 
-#parse the zipped DwC archive 
-dwc.df <- dwca_read("/Users/elizabethlombardi/Desktop/Research/ESIIL biotic interactions group/GBIF viruses/Pisuviricota_INSDC Host Organisms DB/0072899-240626123714530.zip", read = TRUE)
-
-dwc.df$files
-
-
-
-#Try with Joel Nitta's dwctaxon package
+#Load DwC data with Joel Nitta's dwctaxon package
 install.packages("dwctaxon")
 
 library(dwctaxon)
@@ -53,6 +38,25 @@ host.table <- occs.sub %>%
 sum(is.na(occs.sub$associatedTaxa)) #zero?! nice
 
 
+#what genera exist?
+genus.table <- occs.sub %>%
+  count(genus) %>%
+  arrange(desc(n))
+
+
+#potyvirus subset to look at host range in dataset
+poty <- occs.sub %>%
+  filter(genus == "Potyvirus")
+
+table(poty$associatedTaxa)
+
+poty.hosts <- poty %>%
+  count(associatedTaxa) %>%
+  arrange(desc(n))
+
+poty.viruses <- poty %>%
+  count(scientificName) %>%
+  arrange(desc(n))
 
 #MAPPING?
 #{r}
