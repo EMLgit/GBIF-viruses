@@ -1,0 +1,2 @@
+When using this dataset please use the following citation and pay attention to the rights documented in rights.txt:
+European Bioinformatics Institute (EMBL-EBI), GBIF Helpdesk (2024). INSDC Host Organism Sequences. Version 1.99. European Nucleotide Archive (EMBL-EBI). Occurrence dataset https://doi.org/10.15468/e97kmy accessed via GBIF.org on 2024-08-18.
